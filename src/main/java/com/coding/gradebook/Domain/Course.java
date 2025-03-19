@@ -1,7 +1,6 @@
 package com.coding.gradebook.Domain;
 
-import javax.persistence.*;
-import java.util.List;
+import jakarta.persistence.*;
 
 @Entity
 public class Course {
