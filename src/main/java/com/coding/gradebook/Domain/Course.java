@@ -15,6 +15,10 @@ public class Course {
 
     public Course() {  }
 
+    public Course(String type) {
+        this.type = type;
+    }
+
     public Course(Long id, String type) {
         this.id = id;
         this.type = type;

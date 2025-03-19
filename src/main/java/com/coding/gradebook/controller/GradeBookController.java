@@ -1,6 +1,6 @@
 package com.coding.gradebook.controller;
 
-import com.coding.gradebook.request.GradeBookRequest;
+import com.coding.gradebook.request.AssessmentSubmitRequest;
 import com.coding.gradebook.service.GradeBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,13 +17,16 @@ public class GradeBookController {
 
     private static final Logger log = LoggerFactory.getLogger(GradeBookController.class);
 
-    @Autowired
     private GradeBookService gradeBookService;
 
+    public GradeBookController(GradeBookService gradeBookService) {
+        this.gradeBookService = gradeBookService;
+    }
+
     @PostMapping("/submitAssessment")
-    public ResponseEntity<String> createStock(@RequestBody GradeBookRequest request) {
+    public ResponseEntity<String> createStock(@RequestBody AssessmentSubmitRequest request) {
         log.info("Request Received to accept and record user assessment submissions{}", request);
-        //this.gradeBookService.submitAssessment(request);
+        this.gradeBookService.submitAssessment(request);
         return ResponseEntity.ok("Assessment Submitted Successfully.");
     }
 

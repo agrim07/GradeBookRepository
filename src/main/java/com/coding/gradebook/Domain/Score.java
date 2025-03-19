@@ -33,6 +33,15 @@ public class Score {
 
     public Score() { }
 
+    public Score(User user, Course course, Assessment assessment, BigDecimal pointsEarned,
+                 BigDecimal pointsPossible) {
+        this.user = user;
+        this.course = course;
+        this.assessment = assessment;
+        this.pointsEarned = pointsEarned;
+        this.pointsPossible = pointsPossible;
+    }
+
     public Score(Long id, User user, Course course, Assessment assessment, BigDecimal pointsEarned,
                  BigDecimal pointsPossible, String attemptedOn) {
         this.id = id;

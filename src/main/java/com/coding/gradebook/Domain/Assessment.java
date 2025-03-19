@@ -14,6 +14,10 @@ public class Assessment {
 
     public Assessment() { }
 
+    public Assessment(String type) {
+        this.type = type;
+    }
+
     public Assessment(Long id, String type) {
         this.id = id;
         this.type = type;
