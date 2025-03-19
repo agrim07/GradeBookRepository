@@ -24,10 +24,31 @@ public class GradeBookController {
     }
 
     @PostMapping("/submitAssessment")
-    public ResponseEntity<String> createStock(@RequestBody AssessmentSubmitRequest request) {
+    public ResponseEntity<String> submitAssessment(@RequestBody AssessmentSubmitRequest request) {
         log.info("Request Received to accept and record user assessment submissions{}", request);
         this.gradeBookService.submitAssessment(request);
         return ResponseEntity.ok("Assessment Submitted Successfully.");
+    }
+
+    @PostMapping("/createUser")
+    public ResponseEntity<String> createUser(@RequestBody String name) {
+        log.info("Request Received to create a User name {}", name);
+        this.gradeBookService.createUser(name);
+        return ResponseEntity.ok("User created Successfully.");
+    }
+
+    @PostMapping("/createCourse")
+    public ResponseEntity<String> createCourse(@RequestBody String name) {
+        log.info("Request Received to create a Course name {}", name);
+        this.gradeBookService.createCourse(name);
+        return ResponseEntity.ok("Course created Successfully.");
+    }
+
+    @PostMapping("/createAssessment")
+    public ResponseEntity<String> createAssessment(@RequestBody String type) {
+        log.info("Request Received to create a Assessment name {}", type);
+        this.gradeBookService.createAssessment(type);
+        return ResponseEntity.ok("Assessment created Successfully.");
     }
 
 }

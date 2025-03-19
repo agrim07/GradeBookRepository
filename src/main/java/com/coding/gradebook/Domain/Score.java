@@ -1,5 +1,6 @@
 package com.coding.gradebook.Domain;
 
+import com.coding.gradebook.constant.GradeBookConstant;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 
@@ -10,15 +11,15 @@ public class Score {
     @Column(name = "ID", updatable = false, nullable = false)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "course_id", referencedColumnName = "id")
     private Course course;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "assessment_id", referencedColumnName = "id")
     private Assessment assessment;
 
@@ -57,7 +58,7 @@ public class Score {
     @PreUpdate
     public void insertUpdatePreEvent() {
         if(null == attemptedOn) {
-            attemptedOn = String.valueOf(System.currentTimeMillis());
+            attemptedOn = GradeBookConstant.dateFormat.format(System.currentTimeMillis());
         }
     }
 

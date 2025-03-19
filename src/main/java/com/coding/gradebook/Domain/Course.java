@@ -18,6 +18,10 @@ public class Course {
         this.type = type;
     }
 
+    public Course(Long id) {
+        this.id = id;
+    }
+
     public Course(Long id, String type) {
         this.id = id;
         this.type = type;
