@@ -23,8 +23,8 @@ public class GradeBookService {
     }
 
     private Score mapToScoreEntity(AssessmentSubmitRequest request) {
-        return new Score(new User(request.getUserId(), "Dummy-Name"), new Course(request.getCourseId(), "Dummy-Java"),
-                new Assessment(request.getAccessmentId(), "Dummy-Quiz"), request.getScore().getPointsEarned(),
+        return new Score(new User("Dummy-Name"), new Course( "Dummy-Java"),
+                new Assessment( "Dummy-Quiz"), request.getScore().getPointsEarned(),
                 request.getScore().getPointsPossible());
     }
 }

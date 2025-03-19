@@ -5,14 +5,14 @@ import java.util.Date;
 public class AssessmentSubmitRequest {
     private Long courseId;
     private Long userId;
-    private Long accessmentId;
+    private Long assessmentId;
     private Date dtSubmitted;
     private ScoreRequest score;
 
-    public AssessmentSubmitRequest(Long courseId, Long userId, Long accessmentId, Date dtSubmitted, ScoreRequest score) {
+    public AssessmentSubmitRequest(Long courseId, Long userId, Long assessmentId, Date dtSubmitted, ScoreRequest score) {
         this.courseId = courseId;
         this.userId = userId;
-        this.accessmentId = accessmentId;
+        this.assessmentId = assessmentId;
         this.dtSubmitted = dtSubmitted;
         this.score = score;
     }
@@ -33,12 +33,12 @@ public class AssessmentSubmitRequest {
         this.userId = userId;
     }
 
-    public Long getAccessmentId() {
-        return accessmentId;
+    public Long getAssessmentId() {
+        return assessmentId;
     }
 
-    public void setAccessmentId(Long accessmentId) {
-        this.accessmentId = accessmentId;
+    public void setAssessmentId(Long assessmentId) {
+        this.assessmentId = assessmentId;
     }
 
     public Date getDtSubmitted() {
@@ -55,5 +55,16 @@ public class AssessmentSubmitRequest {
 
     public void setScore(ScoreRequest score) {
         this.score = score;
+    }
+
+    @Override
+    public String toString() {
+        return "AssessmentSubmitRequest{" +
+                "courseId=" + courseId +
+                ", userId=" + userId +
+                ", assessmentId=" + assessmentId +
+                ", dtSubmitted=" + dtSubmitted +
+                ", score=" + score +
+                '}';
     }
 }

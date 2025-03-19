@@ -18,7 +18,7 @@ public class Score {
     @JoinColumn(name = "course_id", referencedColumnName = "id")
     private Course course;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "assessment_id", referencedColumnName = "id")
     private Assessment assessment;
 

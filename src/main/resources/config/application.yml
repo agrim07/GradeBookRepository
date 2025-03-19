@@ -11,12 +11,11 @@ spring:
     password: admin
     driverClassName: org.sqlite.JDBC
   jpa:
-    properties:
-      hibernate.database-platform: org.sqlite.hibernate.dialect.SQLiteDialect
-      hibernate.ddl-auto: update
+    hibernate.ddl-auto: create
+    hibernate.database-platform: org.sqlite.hibernate.dialect.SQLiteDialect
 
 
 logging:
   level:
-    dk.bankdata.pmt.payment: INFO
+    com.coding.gradebook: INFO
     org.hibernate.engine.jdbc.spi.SqlExceptionHelper: ERROR
