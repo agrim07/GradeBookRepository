@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.coding.gradebook.GradeBookApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-03-19T09:43:52.414Z" hostname="apples-Laptop.local" time="0.377">
+  <properties/>
+  <testcase name="contextLoads()" classname="com.coding.gradebook.GradeBookApplicationTests" time="0.377"/>
+  <system-out><![CDATA[15:13:51.747 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.coding.gradebook.GradeBookApplicationTests]: GradeBookApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:13:51.792 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.coding.gradebook.GradeBookApplication for test class com.coding.gradebook.GradeBookApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.3)
+
+2025-03-19T15:13:51.962+05:30  INFO 42860 --- [gradebook] [    Test worker] c.c.gradebook.GradeBookApplicationTests  : Starting GradeBookApplicationTests using Java 17.0.14 with PID 42860 (started by amaresh in /Users/amaresh/Downloads/GradeBookRepository)
+2025-03-19T15:13:51.963+05:30  INFO 42860 --- [gradebook] [    Test worker] c.c.gradebook.GradeBookApplicationTests  : No active profile set, falling back to 1 default profile: "default"
+2025-03-19T15:13:52.408+05:30  INFO 42860 --- [gradebook] [    Test worker] c.c.gradebook.GradeBookApplicationTests  : Started GradeBookApplicationTests in 0.553 seconds (process running for 1.04)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
