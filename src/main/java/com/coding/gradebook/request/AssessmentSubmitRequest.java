@@ -1,70 +1,23 @@
 package com.coding.gradebook.request;
 
-import java.util.Date;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class AssessmentSubmitRequest {
+    @NotNull(message = "Course ID is required.")
     private Long courseId;
+
+    @NotNull(message = "User Id is required.")
     private Long userId;
+
+    @NotNull(message = "Assessment Id is required.")
     private Long assessmentId;
-    private Date dtSubmitted;
+
+    @NotNull(message = "Score is required.")
     private ScoreRequest score;
-
-    public AssessmentSubmitRequest(Long courseId, Long userId, Long assessmentId, Date dtSubmitted, ScoreRequest score) {
-        this.courseId = courseId;
-        this.userId = userId;
-        this.assessmentId = assessmentId;
-        this.dtSubmitted = dtSubmitted;
-        this.score = score;
-    }
-
-    public Long getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(Long courseId) {
-        this.courseId = courseId;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public Long getAssessmentId() {
-        return assessmentId;
-    }
-
-    public void setAssessmentId(Long assessmentId) {
-        this.assessmentId = assessmentId;
-    }
-
-    public Date getDtSubmitted() {
-        return dtSubmitted;
-    }
-
-    public void setDtSubmitted(Date dtSubmitted) {
-        this.dtSubmitted = dtSubmitted;
-    }
-
-    public ScoreRequest getScore() {
-        return score;
-    }
-
-    public void setScore(ScoreRequest score) {
-        this.score = score;
-    }
-
-    @Override
-    public String toString() {
-        return "AssessmentSubmitRequest{" +
-                "courseId=" + courseId +
-                ", userId=" + userId +
-                ", assessmentId=" + assessmentId +
-                ", dtSubmitted=" + dtSubmitted +
-                ", score=" + score +
-                '}';
-    }
 }

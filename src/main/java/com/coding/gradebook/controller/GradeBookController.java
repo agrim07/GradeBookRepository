@@ -3,6 +3,7 @@ package com.coding.gradebook.controller;
 import com.coding.gradebook.request.AssessmentSubmitRequest;
 import com.coding.gradebook.response.UserAssessmentResponse;
 import com.coding.gradebook.service.GradeBookService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
@@ -23,7 +24,7 @@ public class GradeBookController {
     }
 
     @PostMapping("/submitAssessment")
-    public ResponseEntity<String> submitAssessment(@RequestBody AssessmentSubmitRequest request) {
+    public ResponseEntity<String> submitAssessment(@Valid @RequestBody AssessmentSubmitRequest request) {
         log.info("Request Received to accept and record user assessment submissions{}", request);
         this.gradeBookService.submitAssessment(request);
         return ResponseEntity.ok("Assessment Submitted Successfully.");

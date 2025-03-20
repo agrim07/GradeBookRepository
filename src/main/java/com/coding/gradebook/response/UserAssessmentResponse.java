@@ -1,31 +1,15 @@
 package com.coding.gradebook.response;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.List;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserAssessmentResponse {
     private Long userId;
     private List<AssessmentResponse> assessments;
-
-    public UserAssessmentResponse() {}
-
-    public UserAssessmentResponse(Long userId, List<AssessmentResponse> assessments) {
-        this.userId = userId;
-        this.assessments = assessments;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public List<AssessmentResponse> getAssessments() {
-        return assessments;
-    }
-
-    public void setAssessments(List<AssessmentResponse> assessments) {
-        this.assessments = assessments;
-    }
 }
