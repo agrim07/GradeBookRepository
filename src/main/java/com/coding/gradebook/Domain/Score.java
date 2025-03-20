@@ -11,16 +11,16 @@ public class Score {
     @Column(name = "ID", updatable = false, nullable = false)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "USER_ID", referencedColumnName = "id")
     private User user;
 
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "course_id", referencedColumnName = "id")
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "COURSE_ID", referencedColumnName = "id")
     private Course course;
 
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "assessment_id", referencedColumnName = "id")
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "ASSESSMENT_ID", referencedColumnName = "id")
     private Assessment assessment;
 
     @Column(name = "POINTS_EARNED")

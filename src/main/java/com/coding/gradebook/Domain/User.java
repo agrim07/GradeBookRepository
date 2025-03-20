@@ -2,6 +2,8 @@ package com.coding.gradebook.Domain;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class User {
     @Id
@@ -11,6 +13,9 @@ public class User {
 
     @Column(name = "NAME")
     private String name;
+
+    @OneToMany(mappedBy = "user")
+    private List<Score> scores;
 
     public User() { }
 
@@ -43,11 +48,20 @@ public class User {
         this.name = name;
     }
 
+    public List<Score> getScores() {
+        return scores;
+    }
+
+    public void setScores(List<Score> scores) {
+        this.scores = scores;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", scores=" + scores +
                 '}';
     }
 }

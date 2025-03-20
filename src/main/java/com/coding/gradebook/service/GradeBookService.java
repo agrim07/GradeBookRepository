@@ -4,12 +4,20 @@ import com.coding.gradebook.Domain.Assessment;
 import com.coding.gradebook.Domain.Course;
 import com.coding.gradebook.Domain.Score;
 import com.coding.gradebook.Domain.User;
+import com.coding.gradebook.exception.RecordNotFoundException;
 import com.coding.gradebook.repository.AssessmentRepository;
 import com.coding.gradebook.repository.CourseRepository;
 import com.coding.gradebook.repository.ScoreRepository;
 import com.coding.gradebook.repository.UserRepository;
 import com.coding.gradebook.request.AssessmentSubmitRequest;
+import com.coding.gradebook.response.AssessmentResponse;
+import com.coding.gradebook.response.ScoreResponse;
+import com.coding.gradebook.response.UserAssessmentResponse;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GradeBookService {
@@ -42,6 +50,30 @@ public class GradeBookService {
 
     public void createAssessment(String type) {
         assessmentRepository.save(new Assessment(type));
+    }
+
+    public List<UserAssessmentResponse> getUsers() {
+        List<UserAssessmentResponse> userAssessmentResponses = new ArrayList<>();
+        List<User> users = userRepository.findAll();
+        users.forEach(user -> {
+            List<AssessmentResponse> assessmentList = new ArrayList<>();
+            user.getScores().forEach(score -> assessmentList.add(new AssessmentResponse(score.getCourse().getId(),
+                    score.getAssessment().getId(), score.getAttemptedOn(), new ScoreResponse(score.getPointsEarned(), score.getPointsPossible()))));
+            userAssessmentResponses.add(new UserAssessmentResponse(user.getId(), assessmentList));
+        });
+        return userAssessmentResponses;
+    }
+
+    public UserAssessmentResponse getUser(Long userId) {
+        Optional<User> optionalUser = userRepository.findById(userId);
+        if(optionalUser.isPresent()) {
+            List<AssessmentResponse> assessmentList = new ArrayList<>();
+            User user = optionalUser.get();
+            user.getScores().forEach(score -> assessmentList.add(new AssessmentResponse(score.getCourse().getId(),
+            score.getAssessment().getId(), score.getAttemptedOn(), new ScoreResponse(score.getPointsEarned(), score.getPointsPossible()))));
+            return new UserAssessmentResponse(user.getId(), assessmentList);
+        }
+        throw new RecordNotFoundException("User not found");
     }
 
     private Score mapToScoreEntity(AssessmentSubmitRequest request) {

@@ -1,15 +1,14 @@
 package com.coding.gradebook.controller;
 
 import com.coding.gradebook.request.AssessmentSubmitRequest;
+import com.coding.gradebook.response.UserAssessmentResponse;
 import com.coding.gradebook.service.GradeBookService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/v1")
@@ -49,6 +48,20 @@ public class GradeBookController {
         log.info("Request Received to create a Assessment name {}", type);
         this.gradeBookService.createAssessment(type);
         return ResponseEntity.ok("Assessment created Successfully.");
+    }
+
+    @GetMapping("/usersScores")
+    public ResponseEntity<List<UserAssessmentResponse>> usersScores() {
+        log.info("Request Received to get scores for all users.");
+        List<UserAssessmentResponse> userScores = this.gradeBookService.getUsers();
+        return ResponseEntity.ok(userScores);
+    }
+
+    @GetMapping("/usersScores/{userId}")
+    public ResponseEntity<UserAssessmentResponse> userScores(@PathVariable Long userId) {
+        log.info("Request Received to get scores for user ID {}.", userId);
+        UserAssessmentResponse responses = this.gradeBookService.getUser(userId);
+        return ResponseEntity.ok(responses);
     }
 
 }
